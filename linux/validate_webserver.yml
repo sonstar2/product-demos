@@ -1,11 +1,16 @@
+---
 - name: Validate Webserver
   hosts: "{{ _hosts | default(omit) }}"
   gather_facts: false
 
   tasks:
+    - name: Assert public_ip
+      ansible.builtin.assert:
+        that: public_ip is defined
+
     - name: Check Web Page
       ansible.builtin.uri:
-        url: "{{ webserver_url }}"
+        url: "http://{{ public_ip }}"
         return_content: true
       register: web_output
       changed_when: false
