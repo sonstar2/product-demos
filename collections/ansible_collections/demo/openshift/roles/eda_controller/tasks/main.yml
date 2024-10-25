@@ -13,7 +13,7 @@
 
     - name: Retrieve created route
       kubernetes.core.k8s_info:
-        api_version: "route.openshift.io/v1"
+        api_version: route.openshift.io/v1
         kind: Route
         name: "{{ eda_controller_project_app_name }}"
         namespace: "{{ eda_controller_project }}"
@@ -29,7 +29,7 @@
     - name: Wait for eda_controller to be running
       ansible.builtin.uri:
         url: https://{{ eda_controller_hostname }}/api/eda/v1/users/me/awx-tokens/
-        user: "admin"
+        user: admin
         password: "{{ lookup('ansible.builtin.env', 'CONTROLLER_PASSWORD') }}"
         method: GET
         force_basic_auth: true

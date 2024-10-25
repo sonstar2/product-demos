@@ -1,6 +1,6 @@
 ---
 - name: Generate OpenSCAP compliance report
-  hosts: '{{ _hosts | default(omit) }}'
+  hosts: "{{ _hosts | default(omit) }}"
   become: true
 
   vars:
@@ -20,16 +20,16 @@
 
     - name: Ensure OpenSCAP tools are installed
       ansible.builtin.dnf:
-        name: '{{ openscap_packages }}'
+        name: "{{ openscap_packages }}"
         state: present
 
     - name: Ensure report directory exists
       ansible.builtin.file:
-        path: '{{ _report_dir }}/{{ _profile }}'
+        path: "{{ _report_dir }}/{{ _profile }}"
         state: directory
         owner: root
         group: root
-        mode: 0755
+        mode: "0755"
 
     - name: Ensure report directory exists in Report Server
       ansible.builtin.file:
@@ -37,17 +37,17 @@
         state: directory
         owner: root
         group: root
-        mode: 0755
+        mode: "0755"
       delegate_to: security_report
 
     - name: Set report name
       ansible.builtin.set_fact:
-        _report: '{{ _report_dir }}/{{ _profile }}/report-{{ ansible_date_time.iso8601 }}.html'
+        _report: "{{ _report_dir }}/{{ _profile }}/report-{{ ansible_date_time.iso8601 }}.html"
         _report_server_report: "{{ _report_server_dir }}/{{ server_environment | default('production') }}/{{ _profile }}/report-{{ ansible_date_time.iso8601 }}.html"
 
     - name: Copy tailor file
       ansible.builtin.copy:
-        dest: "/usr/share/xml/scap/e8_tailor.xml"
+        dest: /usr/share/xml/scap/e8_tailor.xml
         src: templates/e8_tailor.xml
         mode: "0664"
 
@@ -56,29 +56,26 @@
         oscap xccdf eval --profile {{ _profile }} --tailoring-file /usr/share/xml/scap/e8_tailor.xml --report {{ _report }}
         /usr/share/xml/scap/ssg/content/ssg-rhel{{ ansible_distribution_major_version }}-ds.xml
       args:
-        creates: '{{ _report }}'
+        creates: "{{ _report }}"
       register: _oscap
       failed_when: _oscap.rc not in [0, 2]
 
     - name: Fetch the file
       ansible.builtin.fetch:
-        src: '{{ _report }}'
-        dest: '/tmp/report-{{ ansible_date_time.iso8601 }}.html'
+        src: "{{ _report }}"
+        dest: /tmp/report-{{ ansible_date_time.iso8601 }}.html
         flat: true
 
     - name: Copy the file from master to mwiapp02
-      ansible.builtin.copy: 
-        src: '/tmp/report-{{ ansible_date_time.iso8601 }}.html'
+      ansible.builtin.copy:
+        src: /tmp/report-{{ ansible_date_time.iso8601 }}.html
         dest: "{{ _report_server_dir }}/{{ server_environment | default('production') }}/{{ _profile }}/report-{{ ansible_date_time.iso8601 }}.html"
       delegate_to: security_report
-       
+
     - name: Set report permissions
       ansible.builtin.file:
-        path: '{{ _report_server_report }}'
+        path: "{{ _report_server_report }}"
         owner: root
         group: root
-        mode: 0644
+        mode: "0644"
       delegate_to: security_report
-
-
-...

@@ -18,6 +18,3 @@
       condition: true
       action:
         debug:
-
-
-

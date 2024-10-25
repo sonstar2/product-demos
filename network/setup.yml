@@ -1,6 +1,5 @@
 ---
 user_message:
-
 controller_execution_environments:
   - name: Networking Execution Environment
     image: quay.io/nleiva/ee-network-image
@@ -47,8 +46,8 @@ controller_templates:
     ask_limit_on_launch: true
     use_fact_cache: true
     survey:
-      name: ''
-      description: ''
+      name: ""
+      description: ""
       spec:
         - question_name: What resource would you like to configure?
           type: multiplechoice
@@ -67,23 +66,23 @@ controller_templates:
             - snmp
             - user
 
-  - name: "NETWORK / Report"
+  - name: NETWORK / Report
     job_type: check
     organization: Default
     inventory: Network Inventory
-    project: "Ansible official demo project"
-    playbook: "network/report.yml"
+    project: Ansible official demo project
+    playbook: network/report.yml
     notification_templates_started: Telemetry
     notification_templates_success: Telemetry
     notification_templates_error: Telemetry
     execution_environment: Networking Execution Environment
     use_fact_cache: true
     credentials:
-      - "Demo Credential"
+      - Demo Credential
     survey_enabled: true
     survey:
-      name: ''
-      description: ''
+      name: ""
+      description: ""
       spec:
         - question_name: What devices do you want to include in the report?
           type: multiplechoice
@@ -96,12 +95,12 @@ controller_templates:
             - sandbox-nxos-1.cisco.com
             - routers
 
-  - name: "NETWORK / DISA STIG"
+  - name: NETWORK / DISA STIG
     job_type: check
     organization: Default
     inventory: Network Inventory
-    project: "Ansible official demo project"
-    playbook: "network/compliance.yml"
+    project: Ansible official demo project
+    playbook: network/compliance.yml
     notification_templates_started: Telemetry
     notification_templates_success: Telemetry
     notification_templates_error: Telemetry

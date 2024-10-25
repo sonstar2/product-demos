@@ -27,7 +27,7 @@
 
     - name: Create Sudo Rule
       ansible.builtin.copy:
-        dest: "/etc/sudoers.d/{{ sudo_user }}"
+        dest: /etc/sudoers.d/{{ sudo_user }}
         owner: root
         group: root
         mode: "0640"
@@ -35,7 +35,7 @@
 
     - name: Set Permission Cleanup
       ansible.posix.at:
-        command: "rm /etc/sudoers.d/{{ sudo_user }}"
+        command: rm /etc/sudoers.d/{{ sudo_user }}
         count: "{{ sudo_time }}"
         units: "{{ sudo_units }}"
       when: sudo_cleanup | bool

@@ -4,7 +4,7 @@
   sources:
     - name: listen for alerts
       ansible.eda.alertmanager:
-        host: 0.0.0.0
+        host: "0.0.0.0"
         port: 8000
   rules:
     # - name: restart web server
@@ -18,12 +18,12 @@
       condition: event.alert.labels.job == "selinux" and event.alert.status == "firing"
       action:
         run_job_template:
-          name: 'E8 SELinux Enforcement'
+          name: E8 SELinux Enforcement
           organization: Default
           job_args:
             extra_vars:
-              compliance_profile: "e8"
-              _hosts: "aws_rhel92"
+              compliance_profile: e8
+              _hosts: aws_rhel92
               job_tags:
                 - selinux_policytype
                 - selinux_state"
@@ -32,7 +32,5 @@
       condition: event.alert.labels.job == "httpd" and event.alert.status == "firing"
       action:
         run_workflow_template:
-          name: 'digital_twin_remediation'
+          name: digital_twin_remediation
           organization: Default
-
-

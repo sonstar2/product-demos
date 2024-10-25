@@ -2,7 +2,6 @@
 _deployment_id: "{{ lookup('file', playbook_dir + '/.deployment_id') }}"
 
 user_message:
-
 controller_execution_environments:
   - name: Cloud Services Execution Environment
     image: quay.io/scottharwell/cloud-ee:latest
@@ -44,7 +43,7 @@ controller_inventory_sources:
         - tag:Name
       compose:
         ansible_host: public_ip_address
-        ansible_user: 'ec2-user'
+        ansible_user: ec2-user
       groups:
         cloud_aws: true
         os_linux: tags.blueprint.startswith('rhel')
@@ -153,8 +152,8 @@ controller_templates:
     notification_templates_error: Telemetry
     survey_enabled: true
     survey:
-      name: ''
-      description: ''
+      name: ""
+      description: ""
       spec:
         - question_name: AWS Region
           type: multiplechoice
@@ -186,8 +185,8 @@ controller_templates:
     survey_enabled: true
     allow_simultaneous: true
     survey:
-      name: ''
-      description: ''
+      name: ""
+      description: ""
       spec:
         - question_name: AWS Region
           type: multiplechoice
@@ -268,8 +267,8 @@ controller_templates:
     notification_templates_error: Telemetry
     survey_enabled: true
     survey:
-      name: ''
-      description: ''
+      name: ""
+      description: ""
       spec:
         - question_name: Name or Pattern
           type: text
@@ -292,8 +291,8 @@ controller_templates:
       reports_aws_bucket_name: reports-pd-{{ _deployment_id }}
     survey_enabled: true
     survey:
-      name: ''
-      description: ''
+      name: ""
+      description: ""
       spec:
         - question_name: AWS Region
           type: multiplechoice
@@ -322,8 +321,8 @@ controller_templates:
       reports_aws_bucket_name: reports-pd-{{ _deployment_id }}
     survey_enabled: true
     survey:
-      name: ''
-      description: ''
+      name: ""
+      description: ""
       spec:
         - question_name: AWS Region
           type: multiplechoice
@@ -349,8 +348,8 @@ controller_templates:
     notification_templates_error: Telemetry
     survey_enabled: true
     survey:
-      name: ''
-      description: ''
+      name: ""
+      description: ""
       spec:
         - question_name: AWS Region
           type: multiplechoice
@@ -389,8 +388,8 @@ controller_templates:
     notification_templates_error: Telemetry
     survey_enabled: true
     survey:
-      name: ''
-      description: ''
+      name: ""
+      description: ""
       spec:
         - question_name: AWS Region
           type: multiplechoice
@@ -421,8 +420,8 @@ controller_templates:
     notification_templates_error: Telemetry
     survey_enabled: true
     survey:
-      name: ''
-      description: ''
+      name: ""
+      description: ""
       spec:
         - question_name: AWS Region
           type: multiplechoice
@@ -440,11 +439,11 @@ controller_templates:
           variable: _hosts
           required: false
 
-  - name: "LINUX / Patching"
+  - name: LINUX / Patching
     job_type: check
-    inventory: "Demo Inventory"
-    project: "Ansible official demo project"
-    playbook: "linux/patching.yml"
+    inventory: Demo Inventory
+    project: Ansible official demo project
+    playbook: linux/patching.yml
     execution_environment: Default execution environment
     notification_templates_started: Telemetry
     notification_templates_success: Telemetry
@@ -452,11 +451,11 @@ controller_templates:
     use_fact_cache: true
     ask_job_type_on_launch: true
     credentials:
-      - "Demo Credential"
+      - Demo Credential
     survey_enabled: true
     survey:
-      name: ''
-      description: ''
+      name: ""
+      description: ""
       spec:
         - question_name: Server Name or Pattern
           type: text
@@ -474,8 +473,8 @@ controller_workflows:
       vm_deployment: cloud_stack
     survey_enabled: true
     survey:
-      name: ''
-      description: ''
+      name: ""
+      description: ""
       spec:
         - question_name: AWS Region
           type: multiplechoice
@@ -521,7 +520,7 @@ controller_workflows:
         failure_nodes:
           - Ticket - VPC Failed
       - identifier: Ticket - Keypair Failed
-        unified_job_template: 'SUBMIT FEEDBACK'
+        unified_job_template: SUBMIT FEEDBACK
         extra_data:
           feedback: Failed to create AWS keypair
       - identifier: VPC Report
@@ -579,7 +578,7 @@ controller_workflows:
         failure_nodes:
           - Ticket - Instance Failed
       - identifier: Ticket - VPC Failed
-        unified_job_template: 'SUBMIT FEEDBACK'
+        unified_job_template: SUBMIT FEEDBACK
         extra_data:
           feedback: Failed to create AWS VPC
       - identifier: Update Inventory
@@ -587,7 +586,7 @@ controller_workflows:
         success_nodes:
           - Tag Report
       - identifier: Ticket - Instance Failed
-        unified_job_template: 'SUBMIT FEEDBACK'
+        unified_job_template: SUBMIT FEEDBACK
         extra_data:
           feedback: Failed to create AWS instance
       - identifier: Tag Report
@@ -601,8 +600,8 @@ controller_workflows:
     notification_templates_error: Telemetry
     survey_enabled: true
     survey:
-      name: ''
-      description: ''
+      name: ""
+      description: ""
       spec:
         - question_name: AWS Region
           type: multiplechoice
@@ -643,6 +642,6 @@ controller_workflows:
         failure_nodes:
           - Ticket - Restore Failed
       - identifier: Ticket - Restore Failed
-        unified_job_template: 'SUBMIT FEEDBACK'
+        unified_job_template: SUBMIT FEEDBACK
         extra_data:
           feedback: Cloud / AWS / Patch EC2 Workflow | Failed to restore ec2 from snapshot

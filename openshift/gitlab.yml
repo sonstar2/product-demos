@@ -32,7 +32,7 @@
           kind: Subscription
           metadata:
             labels:
-              operators.coreos.com/openshift-cert-manager-operator.cert-manager-operator: ''
+              operators.coreos.com/openshift-cert-manager-operator.cert-manager-operator: ""
             name: openshift-cert-manager-operator
             namespace: cert-manager-operator
           spec:
@@ -70,7 +70,7 @@
           kind: Subscription
           metadata:
             labels:
-              operators.coreos.com/gitlab-operator-kubernetes.gitlab-system: ''
+              operators.coreos.com/gitlab-operator-kubernetes.gitlab-system: ""
             name: gitlab-operator-kubernetes
             namespace: gitlab-system
           spec:
@@ -103,7 +103,7 @@
 
     - name: Grab url for Gitlab spec
       ansible.builtin.set_fact:
-        cluster_domain: "apps{{ lookup('ansible.builtin.env', 'K8S_AUTH_HOST') | regex_search('\\.[^:]*') }}"
+        cluster_domain: apps{{ lookup('ansible.builtin.env', 'K8S_AUTH_HOST') | regex_search('\.[^:]*') }}
       when: cluster_domain is undefined
 
     - name: Deploy a GitLab instance
@@ -125,11 +125,11 @@
                   install: false
                 global:
                   hosts:
-                    domain: "{{ cluster_domain }}"   # apps.cluster-9xrlv.9xrlv.sandbox644.opentlc.com
+                    domain: "{{ cluster_domain }}" # apps.cluster-9xrlv.9xrlv.sandbox644.opentlc.com
                   ingress:
                     class: none
                     configureCertmanager: true
                     annotations:
-                      route.openshift.io/termination: "edge"
+                      route.openshift.io/termination: edge
                 certmanager-issuer:
                   email: "{{ cert_email | default('nobody@nowhere.nosite') }}"

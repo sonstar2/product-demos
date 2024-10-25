@@ -8,7 +8,7 @@
   tasks:
     - name: Apply System Roles
       ansible.builtin.include_role:
-        name: "redhat.rhel_system_roles.{{ item }}"
+        name: redhat.rhel_system_roles.{{ item }}
       loop: "{{ system_roles }}"
       when:
         - system_roles | d("") | length > 0

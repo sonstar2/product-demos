@@ -10,7 +10,7 @@
 
     - name: Check Web Page
       ansible.builtin.uri:
-        url: "http://{{ public_ip }}"
+        url: http://{{ public_ip }}
         return_content: true
       register: web_output
       changed_when: false

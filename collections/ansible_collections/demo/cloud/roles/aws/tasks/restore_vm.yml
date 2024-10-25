@@ -44,7 +44,7 @@
       amazon.aws.ec2_snapshot_info:
         region: "{{ aws_region }}"
         filters:
-          "tag:Name": "{{ inventory_hostname }}"
+          tag:Name: "{{ inventory_hostname }}"
 
     - name: AWS | RESTORE VM | create volume from latest snapshot
       when: inventory_hostname not in aws_snapshots
@@ -52,7 +52,7 @@
         region: "{{ aws_region }}"
         instance: "{{ instance_id }}"
         snapshot: "{{ r_snapshots.snapshots[0].snapshot_id }}"
-        device_name: "/dev/sda1"
+        device_name: /dev/sda1
 
     - name: AWS | RESTORE VM | start vm
       amazon.aws.ec2_instance:
