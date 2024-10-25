@@ -5,7 +5,7 @@
     - name: AWS | SNAPSHOT VM | assert id
       ansible.builtin.assert:
         that: instance_id is defined
-        fail_msg: "instance_id is required for snapshot operations"
+        fail_msg: instance_id is required for snapshot operations
 
     - name: AWS | SNAPSHOT VM | include vars
       ansible.builtin.include_vars:
@@ -27,7 +27,7 @@
       amazon.aws.ec2_snapshot:
         region: "{{ aws_region }}"
         volume_id: "{{ volume.id }}"
-        description: "Snapshot taken by Red Hat Product demos"
+        description: Snapshot taken by Red Hat Product demos
         snapshot_tags: "{{ tags }}"
 
 - name: AWS | SNAPSHOT VM | format snapshot stat

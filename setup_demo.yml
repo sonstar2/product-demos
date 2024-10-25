@@ -6,7 +6,7 @@
     - name: Default Components
       ansible.builtin.include_role:
         name: infra.controller_configuration.dispatch
-      vars:  # noqa var-naming[no-role-prefix]
+      vars: # noqa var-naming[no-role-prefix]
         controller_execution_environments:
           - name: product-demos
             image: quay.io/acme_corp/product-demos-ee:latest
@@ -14,12 +14,12 @@
           - name: Default
             default_environment: product-demos
         controller_settings:
-          - name: "SESSION_COOKIE_AGE"
+          - name: SESSION_COOKIE_AGE
             value: 180000
 
-    - name: "Include configuration for {{ demo }}"
+    - name: Include configuration for {{ demo }}
       ansible.builtin.include_vars: "{{ demo }}/setup.yml"
 
     - name: Demo Components
       ansible.builtin.include_role:
-        name: "infra.controller_configuration.dispatch"
+        name: infra.controller_configuration.dispatch

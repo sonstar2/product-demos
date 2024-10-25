@@ -36,9 +36,9 @@
         image: docker.io/httpd
         state: started
         volume:
-          - "./{{ volume_path }}/:/usr/local/apache2/htdocs:z"
+          - ./{{ volume_path }}/:/usr/local/apache2/htdocs:z
         ports:
-          - "8081:443"
+          - 8081:443
         expose:
           - 443
 

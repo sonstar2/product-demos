@@ -7,8 +7,8 @@
 # --------------------------------------------------------
 # Workload: eda_controller
 # --------------------------------------------------------
-eda_controller_project: "aap"
-eda_controller_project_app_name: "eda-controller"
+eda_controller_project: aap
+eda_controller_project_app_name: eda-controller
 
 # eda_controller_admin_password: "{{ common_password }}"
 

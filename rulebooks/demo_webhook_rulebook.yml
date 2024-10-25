@@ -4,7 +4,7 @@
   sources:
     - ansible.eda.webhook:
         port: "{{ port | default(5555) }}"
-        host: 0.0.0.0
+        host: "0.0.0.0"
   rules:
     # - name: Webhook rule
     #   # condition: event.payload.message is select("==", "fapolicyd")
@@ -17,12 +17,10 @@
       condition: event.payload is defined and event.payload[0]["message"] is regex("systemctl stop fapolicyd")
       action:
         run_job_template:
-          name: 'E8 Application Control'
+          name: E8 Application Control
           organization: Default
           job_args:
             extra_vars:
-              compliance_profile: "e8"
-              _hosts: "aws_rhel9"
-              job_tags: "enable_strategy"
-
-
+              compliance_profile: e8
+              _hosts: aws_rhel9
+              job_tags: enable_strategy

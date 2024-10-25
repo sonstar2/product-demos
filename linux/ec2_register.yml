@@ -37,14 +37,14 @@
 
     - name: Remove existing rhui repos
       ansible.builtin.file:
-        path: "/etc/yum.repos.d/{{ item }}"
+        path: /etc/yum.repos.d/{{ item }}
         state: absent
       loop: "{{ repos.stdout_lines }}"
       when: "'rhui' in item"
 
     - name: Install katello package
       ansible.builtin.yum:
-        name: "https://{{ sat_url }}/pub/katello-ca-consumer-latest.noarch.rpm"
+        name: https://{{ sat_url }}/pub/katello-ca-consumer-latest.noarch.rpm
         state: present
         validate_certs: false
         disable_gpg_check: true
@@ -53,8 +53,8 @@
     - name: Manage repos with subscription mangler
       ansible.builtin.lineinfile:
         path: /etc/rhsm/rhsm.conf
-        regexp: '^manage_repos'
-        line: 'manage_repos = 1'
+        regexp: ^manage_repos
+        line: manage_repos = 1
 
     - name: Register subscription mangler
       community.general.redhat_subscription:
@@ -65,7 +65,7 @@
     - name: Configure Red Hat insights
       ansible.builtin.import_role:
         name: redhat.insights.insights_client
-      vars:  # noqa var-naming[no-role-prefix]
+      vars: # noqa var-naming[no-role-prefix]
         insights_display_name: "{{ inventory_hostname }}"
         insights_tags:
           env: "{{ env }}"

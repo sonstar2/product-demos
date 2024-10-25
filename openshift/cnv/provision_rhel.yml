@@ -14,14 +14,14 @@
             namespace: "{{ vm_namespace }}"
             labels:
               app: "{{ vm_name }}"
-              os.template.kubevirt.io/fedora36: 'true'
+              os.template.kubevirt.io/fedora36: "true"
               vm.kubevirt.io/name: "{{ vm_name }}"
           spec:
             dataVolumeTemplates:
               - apiVersion: cdi.kubevirt.io/v1beta1
                 kind: DataVolume
                 metadata:
-                  creationTimestamp: null
+                  creationTimestamp:
                   name: "{{ vm_name }}"
                 spec:
                   sourceRef:
@@ -39,7 +39,7 @@
                   vm.kubevirt.io/flavor: small
                   vm.kubevirt.io/os: "{{ os_version }}"
                   vm.kubevirt.io/workload: server
-                creationTimestamp: null
+                creationTimestamp:
                 labels:
                   kubevirt.io/domain: "{{ vm_name }}"
                   kubevirt.io/size: small

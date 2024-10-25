@@ -24,7 +24,7 @@
 
 - name: Remove existing rhui repos
   ansible.builtin.file:
-    path: "/etc/yum.repos.d/{{ item }}"
+    path: /etc/yum.repos.d/{{ item }}
     state: absent
   loop: "{{ repos.stdout_lines }}"
 
@@ -45,7 +45,7 @@
   throttle: 1
 
 - name: Include repos
-  ansible.builtin.include_vars: "vars/{{ ansible_distribution + ansible_distribution_major_version }}.yml"
+  ansible.builtin.include_vars: vars/{{ ansible_distribution + ansible_distribution_major_version }}.yml
 
 - name: Enable repos
   community.general.rhsm_repository:

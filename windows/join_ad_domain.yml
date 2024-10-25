@@ -6,7 +6,7 @@
   tasks:
     - name: Set a single address on the adapter named Ethernet
       ansible.windows.win_dns_client:
-        adapter_names: 'Ethernet*'
+        adapter_names: Ethernet*
         dns_servers: "{{ hostvars[domain_controller]['private_ip_address'] }}"
 
     - name: Ensure Demo OU exists
@@ -22,7 +22,7 @@
         hostname: "{{ inventory_hostname }}"
         domain_admin_user: "{{ ansible_user }}@ansible.local"
         domain_admin_password: "{{ ansible_password }}"
-        domain_ou_path: "OU=Demo,DC=ansible,DC=local"
+        domain_ou_path: OU=Demo,DC=ansible,DC=local
         state: domain
 
     - name: Reboot windows machine
