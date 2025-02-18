@@ -13,9 +13,9 @@
         controller_organizations:
           - name: Default
             default_environment: product-demos
-        controller_settings:
-          - name: "SESSION_COOKIE_AGE"
-            value: 180000
+        # controller_settings:
+        #   - name: "SESSION_COOKIE_AGE"
+        #     value: 180000
 
     - name: "Include configuration for {{ demo }}"
       ansible.builtin.include_vars: "{{ demo }}/setup.yml"
