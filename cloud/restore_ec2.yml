@@ -6,5 +6,5 @@
   tasks:
     - name: Include restore from snapshot role
       ansible.builtin.include_role:
-        name: "demo.cloud.aws"
+        name: demo.cloud.aws
         tasks_from: restore_vm

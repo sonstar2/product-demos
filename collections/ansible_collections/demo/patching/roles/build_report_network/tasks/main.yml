@@ -14,7 +14,7 @@
 
 - name: Copy CSS over
   ansible.builtin.copy:
-    src: "css"
+    src: css
     dest: "{{ file_path }}"
     directory_mode: true
     mode: "0775"
@@ -27,9 +27,9 @@
     directory_mode: true
     mode: "0644"
   loop:
-    - "webpage_logo.png"
-    - "redhat-ansible-logo.svg"
-    - "router.png"
+    - webpage_logo.png
+    - redhat-ansible-logo.svg
+    - router.png
   check_mode: false
 
 # - name: Display link to Linux patch report

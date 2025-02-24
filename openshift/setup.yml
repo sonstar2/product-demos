@@ -29,42 +29,42 @@ controller_inventory_sources:
 controller_templates:
   - name: OpenShift / EDA / Install Controller
     job_type: run
-    inventory: "Demo Inventory"
-    project: "Ansible official demo project"
-    playbook: "openshift/eda/install.yml"
+    inventory: Demo Inventory
+    project: Ansible official demo project
+    playbook: openshift/eda/install.yml
     notification_templates_started: Telemetry
     notification_templates_success: Telemetry
     notification_templates_error: Telemetry
     survey_enabled: true
     credentials:
-      - "OpenShift Credential"
-      - "Controller Credential"
+      - OpenShift Credential
+      - Controller Credential
 
   - name: OpenShift / CNV / Install Operator
     job_type: run
-    inventory: "Demo Inventory"
-    project: "Ansible official demo project"
-    playbook: "openshift/cnv/install.yml"
+    inventory: Demo Inventory
+    project: Ansible official demo project
+    playbook: openshift/cnv/install.yml
     notification_templates_started: Telemetry
     notification_templates_success: Telemetry
     notification_templates_error: Telemetry
     survey_enabled: true
     credentials:
-      - "OpenShift Credential"
+      - OpenShift Credential
 
   - name: OpenShift / CNV / Create RHEL VM
     job_type: run
-    inventory: "Demo Inventory"
-    project: "Ansible official demo project"
-    playbook: "openshift/cnv/provision_rhel.yml"
+    inventory: Demo Inventory
+    project: Ansible official demo project
+    playbook: openshift/cnv/provision_rhel.yml
     notification_templates_started: Telemetry
     notification_templates_success: Telemetry
     notification_templates_error: Telemetry
     survey_enabled: true
     allow_simultaneous: true
     survey:
-      name: ''
-      description: ''
+      name: ""
+      description: ""
       spec:
         - question_name: VM name
           type: text
@@ -94,13 +94,13 @@ controller_templates:
           variable: rh_subscription_org
           required: true
     credentials:
-      - "OpenShift Credential"
+      - OpenShift Credential
 
   - name: OpenShift / CNV / Delete VM
     job_type: run
-    inventory: "Demo Inventory"
-    project: "Ansible official demo project"
-    playbook: "openshift/cnv/provision.yml"
+    inventory: Demo Inventory
+    project: Ansible official demo project
+    playbook: openshift/cnv/provision.yml
     notification_templates_started: Telemetry
     notification_templates_success: Telemetry
     notification_templates_error: Telemetry
@@ -108,8 +108,8 @@ controller_templates:
     extra_vars:
       instance_state: absent
     survey:
-      name: ''
-      description: ''
+      name: ""
+      description: ""
       spec:
         - question_name: VM name
           type: text
@@ -121,70 +121,70 @@ controller_templates:
           default: openshift-cnv
           required: true
     credentials:
-      - "OpenShift Credential"
+      - OpenShift Credential
 
   - name: OpenShift / CNV / Patching
     job_type: check
-    inventory: "Demo Inventory"
-    project: "Ansible official demo project"
-    playbook: "openshift/cnv/patch.yml"
+    inventory: Demo Inventory
+    project: Ansible official demo project
+    playbook: openshift/cnv/patch.yml
     notification_templates_started: Telemetry
     notification_templates_success: Telemetry
     notification_templates_error: Telemetry
     ask_job_type_on_launch: true
     credentials:
-      - "OpenShift Credential"
-      - "Demo Credential"
+      - OpenShift Credential
+      - Demo Credential
     survey_enabled: true
     survey:
-      name: ''
-      description: ''
+      name: ""
+      description: ""
       spec:
         - question_name: Server Name or Pattern
           type: text
           variable: _hosts
-          default: "openshift-cnv-rhel*"
+          default: openshift-cnv-rhel*
           required: true
 
   - name: OpenShift / CNV / Wait Hosts
-    inventory: "Demo Inventory"
-    project: "Ansible official demo project"
-    playbook: "openshift/cnv/wait.yml"
+    inventory: Demo Inventory
+    project: Ansible official demo project
+    playbook: openshift/cnv/wait.yml
     notification_templates_started: Telemetry
     notification_templates_success: Telemetry
     notification_templates_error: Telemetry
     survey_enabled: true
     survey:
-      name: ''
-      description: ''
+      name: ""
+      description: ""
       spec:
         - question_name: Wait hosts
           type: text
           variable: _hosts
-          default: "openshift-cnv-rhel*"
+          default: openshift-cnv-rhel*
           required: true
 
   - name: OpenShift / Dev Spaces
     job_type: run
-    inventory: "Demo Inventory"
-    project: "Ansible official demo project"
-    playbook: "openshift/devspaces.yml"
+    inventory: Demo Inventory
+    project: Ansible official demo project
+    playbook: openshift/devspaces.yml
     notification_templates_started: Telemetry
     notification_templates_success: Telemetry
     notification_templates_error: Telemetry
     credentials:
-      - "OpenShift Credential"
+      - OpenShift Credential
 
   - name: OpenShift / GitLab
     job_type: run
-    inventory: "Demo Inventory"
-    project: "Ansible official demo project"
-    playbook: "openshift/gitlab.yml"
+    inventory: Demo Inventory
+    project: Ansible official demo project
+    playbook: openshift/gitlab.yml
     notification_templates_started: Telemetry
     notification_templates_success: Telemetry
     notification_templates_error: Telemetry
     credentials:
-      - "OpenShift Credential"
+      - OpenShift Credential
 
 controller_workflows:
   - name: OpenShift / CNV / Infra Stack
@@ -195,8 +195,8 @@ controller_workflows:
     notification_templates_error: Telemetry
     survey_enabled: true
     survey:
-      name: ''
-      description: ''
+      name: ""
+      description: ""
       spec:
         - question_name: SSH Authorized Key
           type: textarea
@@ -232,6 +232,6 @@ controller_workflows:
       - identifier: Update Inventory
         unified_job_template: OpenShift CNV Inventory
       - identifier: Ticket - Instance Failed
-        unified_job_template: 'SUBMIT FEEDBACK'
+        unified_job_template: SUBMIT FEEDBACK
         extra_data:
           feedback: Failed to create CNV instance

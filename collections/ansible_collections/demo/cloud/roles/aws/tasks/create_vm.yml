@@ -3,7 +3,7 @@
   amazon.aws.ec2_vpc_subnet_info:
     region: "{{ aws_region }}"
     filters:
-      "tag:Name": "{{ aws_vpc_name }}-{{ aws_vpc_prefix }}-subnet"
+      tag:Name: "{{ aws_vpc_name }}-{{ aws_vpc_prefix }}-subnet"
   register: aws_subnet
 
 - name: AWS | CREATE VM | save subnet id
@@ -39,7 +39,7 @@
       env: "{{ aws_env_tag }}"
       ansible_group: "{{ aws_ansiblegroup_tag }}"
       owner: "{{ aws_vm_owner }}"
-      info: "This instance was built by Red Hat Product Demos"
+      info: This instance was built by Red Hat Product Demos
       Name: "{{ aws_vm_name }}"
     wait: "{{ aws_ec2_wait }}"
     vpc_subnet_id: "{{ aws_subnet_id }}"

@@ -9,16 +9,16 @@
 
 - name: Upgrade packages (yum)
   ansible.builtin.yum:
-    name: '*'
-    state: latest  # noqa: package-latest - Intended to update packages to latest
+    name: "*"
+    state: latest # noqa: package-latest - Intended to update packages to latest
     exclude: "{{ exclude_packages }}"
   when: ansible_pkg_mgr == "yum"
   register: patchingresult_yum
 
 - name: Upgrade packages (dnf)
   ansible.builtin.dnf:
-    name: '*'
-    state: latest  # noqa: package-latest - Intended to update packages to latest
+    name: "*"
+    state: latest # noqa: package-latest - Intended to update packages to latest
     exclude: "{{ exclude_packages }}"
   when: ansible_pkg_mgr == "dnf"
   register: patchingresult_dnf

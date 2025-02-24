@@ -5,7 +5,7 @@
 - name: Get reports
   ansible.builtin.find:
     paths: "{{ doc_root }}/{{ reports_dir }}"
-    patterns: '*.html'
+    patterns: "*.html"
   register: reports
   check_mode: false
 
@@ -18,7 +18,7 @@
 
 - name: Copy CSS
   ansible.builtin.copy:
-    src: "css"
+    src: css
     dest: "{{ doc_root }}"
     directory_mode: true
     mode: "0775"
@@ -31,7 +31,7 @@
     directory_mode: true
     mode: "0775"
   loop:
-    - "webpage_logo.png"
-    - "redhat-ansible-logo.svg"
-    - "report.png"
+    - webpage_logo.png
+    - redhat-ansible-logo.svg
+    - report.png
   check_mode: false

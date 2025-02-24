@@ -9,11 +9,9 @@ rules:
     max-spaces-after: -1
   indentation:
     level: error
-    indent-sequences: true  # consistent with ansible-lint
+    indent-sequences: true # consistent with ansible-lint
   truthy:
     level: error
     allowed-values:
-      - 'true'
-      - 'false'
-
-...
+      - "true"
+      - "false"
