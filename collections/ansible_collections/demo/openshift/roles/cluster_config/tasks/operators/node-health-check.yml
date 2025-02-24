@@ -1,7 +1,7 @@
 ---
 - name: Create node-health-check operator namespace
   redhat.openshift.k8s:
-    name:  openshift-workload-availability
+    name: openshift-workload-availability
     api_version: v1
     kind: Namespace
     state: present
@@ -29,7 +29,7 @@
       kind: Subscription
       metadata:
         labels:
-          operators.coreos.com/node-healthcheck-operator.openshift-workload-availability: ''
+          operators.coreos.com/node-healthcheck-operator.openshift-workload-availability: ""
         name: node-health-check-operator
         namespace: openshift-workload-availability
       spec:
@@ -49,7 +49,7 @@
         name: self-node-remediation-stable-redhat-operators-openshift-marketplace
         namespace: openshift-workload-availability
         labels:
-          operators.coreos.com/self-node-remediation.openshift-workload-availability: ''
+          operators.coreos.com/self-node-remediation.openshift-workload-availability: ""
       spec:
         channel: stable
         installPlanApproval: Automatic

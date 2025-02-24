@@ -19,7 +19,7 @@
           kind: Subscription
           metadata:
             labels:
-              operators.coreos.com/devspaces.openshift-operators: ''
+              operators.coreos.com/devspaces.openshift-operators: ""
             name: devspaces
             namespace: openshift-operators
           spec:
@@ -70,7 +70,7 @@
                 externalDb: false
                 postgresDb: dbche
                 postgresHostName: postgres
-                postgresPort: '5432'
+                postgresPort: "5432"
                 pvc:
                   claimSize: 1Gi
               devWorkspace: {}
@@ -81,7 +81,7 @@
               metrics:
                 enable: true
               pluginRegistry:
-                openVSXURL: 'https://open-vsx.org'
+                openVSXURL: https://open-vsx.org
             containerRegistry: {}
             devEnvironments:
               startTimeoutSeconds: 300

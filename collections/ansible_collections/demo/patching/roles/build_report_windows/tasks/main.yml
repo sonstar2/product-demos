@@ -7,7 +7,7 @@
 
 - name: Copy CSS over
   ansible.builtin.copy:
-    src: "css"
+    src: css
     dest: "{{ file_path }}"
     directory_mode: true
     mode: "0755"
@@ -19,10 +19,10 @@
     directory_mode: true
     mode: "0644"
   loop:
-    - "webpage_logo.png"
-    - "redhat-ansible-logo.svg"
-    - "server.png"
+    - webpage_logo.png
+    - redhat-ansible-logo.svg
+    - server.png
 
 - name: Display link to inventory report
   ansible.builtin.debug:
-    msg: "Please go to http://{{ ansible_host }}/windows.html"
+    msg: Please go to http://{{ ansible_host }}/windows.html

@@ -1,6 +1,6 @@
 ---
 - name: Generate OpenSCAP compliance report
-  hosts: '{{ _hosts | default(omit) }}'
+  hosts: "{{ _hosts | default(omit) }}"
   become: true
 
   vars:
@@ -19,7 +19,7 @@
 
     - name: Ensure OpenSCAP tools are installed
       ansible.builtin.dnf:
-        name: '{{ openscap_packages }}'
+        name: "{{ openscap_packages }}"
         state: present
 
     - name: Configure httpd
@@ -54,31 +54,31 @@
 
     - name: Ensure report directory exists
       ansible.builtin.file:
-        path: '{{ _report_dir }}/{{ _profile }}'
+        path: "{{ _report_dir }}/{{ _profile }}"
         state: directory
         owner: root
         group: root
-        mode: 0755
+        mode: "0755"
 
     - name: Set report name
       ansible.builtin.set_fact:
-        _report: '{{ _report_dir }}/{{ _profile }}/report-{{ ansible_date_time.iso8601 }}.html'
+        _report: "{{ _report_dir }}/{{ _profile }}/report-{{ ansible_date_time.iso8601 }}.html"
 
     - name: Generate compliance report
       ansible.builtin.command: >-
         oscap xccdf eval --profile {{ _profile }} --report {{ _report }}
         /usr/share/xml/scap/ssg/content/ssg-rhel{{ ansible_distribution_major_version }}-ds.xml
       args:
-        creates: '{{ _report }}'
+        creates: "{{ _report }}"
       register: _oscap
       failed_when: _oscap.rc not in [0, 2]
 
     - name: Set report permissions
       ansible.builtin.file:
-        path: '{{ _report }}'
+        path: "{{ _report }}"
         owner: root
         group: root
-        mode: 0644
+        mode: "0644"
 
   handlers:
     - name: Restart httpd
@@ -86,5 +86,3 @@
         name: httpd
         state: restarted
         enabled: true
-
-...

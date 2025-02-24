@@ -8,7 +8,7 @@
 
 - name: Copy CSS over
   ansible.builtin.copy:
-    src: "css"
+    src: css
     dest: "{{ file_path }}"
     directory_mode: true
     mode: "0775"
@@ -16,7 +16,7 @@
 
 - name: Copy logo over
   ansible.builtin.copy:
-    src: "webpage_logo.png"
+    src: webpage_logo.png
     dest: "{{ file_path }}"
     directory_mode: true
     mode: "0644"
@@ -24,4 +24,4 @@
 
 - name: Display link to Patch report
   ansible.builtin.debug:
-    msg: "Please go to http://{{ ansible_host }}/windowspatch.html"
+    msg: Please go to http://{{ ansible_host }}/windowspatch.html

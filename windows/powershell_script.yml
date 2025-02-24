@@ -3,7 +3,7 @@
   hosts: "{{ _hosts | default('os_windows') }}"
   gather_facts: false
   vars:
-    remote_dest: "C:\\query_services.ps1"
+    remote_dest: C:\query_services.ps1
 
   tasks:
     - name: Copy script to remote

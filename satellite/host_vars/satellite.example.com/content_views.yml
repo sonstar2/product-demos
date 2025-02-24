@@ -7,13 +7,13 @@ satellite_content_views:
       - name: Red Hat Enterprise Linux 7 Server (RPMs)
         basearch: x86_64
         releasever: 7Server
-        product: 'Red Hat Enterprise Linux Server'
+        product: Red Hat Enterprise Linux Server
       - name: Red Hat Enterprise Linux 7 Server - Extras (RPMs)
         basearch: x86_64
-        product: 'Red Hat Enterprise Linux Server'
+        product: Red Hat Enterprise Linux Server
       - name: Red Hat Satellite Tools 6.8 (for RHEL 7 Server) (RPMs)
         basearch: x86_64
-        product: 'Red Hat Enterprise Linux Server'
+        product: Red Hat Enterprise Linux Server
   # Red Hat Enterprise Linux 8
   - name: RHEL8
     content_view: RHEL8

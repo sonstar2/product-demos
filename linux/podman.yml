@@ -36,9 +36,9 @@
         image: docker.io/httpd
         state: started
         volume:
-          - "./{{ volume_path }}/:/usr/local/apache2/htdocs:z"
+          - ./{{ volume_path }}/:/usr/local/apache2/htdocs:z
         ports:
-          - "8081:80"
+          - 8081:80
 
     - name: Check Web Page
       ansible.builtin.uri:

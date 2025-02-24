@@ -20,8 +20,8 @@ controller_credential_types:
           secret: true
     injectors:
       env:
-        INSIGHTS_USER: !unsafe '{{ insights_user }}'
-        INSIGHTS_PASSWORD: !unsafe '{{ insights_password }}'
+        INSIGHTS_USER: !unsafe "{{ insights_user }}"
+        INSIGHTS_PASSWORD: !unsafe "{{ insights_password }}"
 
 controller_credentials:
   - name: Insights Inventory
@@ -41,23 +41,23 @@ controller_inventory_sources:
     credential: Insights Inventory
 
 controller_templates:
-  - name: "LINUX / Register with Insights"
+  - name: LINUX / Register with Insights
     job_type: run
-    inventory: "Demo Inventory"
-    project: "Ansible official demo project"
-    playbook: "linux/ec2_register.yml"
+    inventory: Demo Inventory
+    project: Ansible official demo project
+    playbook: linux/ec2_register.yml
     notification_templates_started: Telemetry
     notification_templates_success: Telemetry
     notification_templates_error: Telemetry
     credentials:
-      - "Demo Credential"
+      - Demo Credential
     survey_enabled: true
     extra_vars:
       activation_key: !unsafe "RHEL{{ ansible_distribution_major_version }}_{{ env }}"
       org_id: REPLACEME
     survey:
-      name: ''
-      description: ''
+      name: ""
+      description: ""
       spec:
         - question_name: Server Name or Pattern
           type: text
@@ -80,41 +80,41 @@ controller_templates:
           variable: org_id
           required: true
 
-  - name: "LINUX / Troubleshoot"
+  - name: LINUX / Troubleshoot
     job_type: run
-    inventory: "Demo Inventory"
-    project: "Ansible official demo project"
-    playbook: "linux/tshoot.yml"
+    inventory: Demo Inventory
+    project: Ansible official demo project
+    playbook: linux/tshoot.yml
     notification_templates_started: Telemetry
     notification_templates_success: Telemetry
     notification_templates_error: Telemetry
     use_fact_cache: true
     credentials:
-      - "Demo Credential"
+      - Demo Credential
     survey_enabled: true
     survey:
-      name: ''
-      description: ''
+      name: ""
+      description: ""
       spec:
         - question_name: Server Name or Pattern
           type: text
           variable: _hosts
           required: true
 
-  - name: "LINUX / Temporary Sudo"
+  - name: LINUX / Temporary Sudo
     job_type: run
-    inventory: "Demo Inventory"
-    project: "Ansible official demo project"
-    playbook: "linux/temp_sudo.yml"
+    inventory: Demo Inventory
+    project: Ansible official demo project
+    playbook: linux/temp_sudo.yml
     notification_templates_started: Telemetry
     notification_templates_success: Telemetry
     notification_templates_error: Telemetry
     credentials:
-      - "Demo Credential"
+      - Demo Credential
     survey_enabled: true
     survey:
-      name: ''
-      description: ''
+      name: ""
+      description: ""
       spec:
         - question_name: Server Name or Pattern
           type: text
@@ -130,11 +130,11 @@ controller_templates:
           default: 10
           required: true
 
-  - name: "LINUX / Patching"
+  - name: LINUX / Patching
     job_type: check
-    inventory: "Demo Inventory"
-    project: "Ansible official demo project"
-    playbook: "linux/patching.yml"
+    inventory: Demo Inventory
+    project: Ansible official demo project
+    playbook: linux/patching.yml
     execution_environment: Default execution environment
     notification_templates_started: Telemetry
     notification_templates_success: Telemetry
@@ -142,32 +142,32 @@ controller_templates:
     use_fact_cache: true
     ask_job_type_on_launch: true
     credentials:
-      - "Demo Credential"
+      - Demo Credential
     survey_enabled: true
     survey:
-      name: ''
-      description: ''
+      name: ""
+      description: ""
       spec:
         - question_name: Server Name or Pattern
           type: text
           variable: _hosts
           required: true
 
-  - name: "LINUX / Start Service"
+  - name: LINUX / Start Service
     job_type: run
-    inventory: "Demo Inventory"
-    project: "Ansible official demo project"
-    playbook: "linux/service_start.yml"
+    inventory: Demo Inventory
+    project: Ansible official demo project
+    playbook: linux/service_start.yml
     notification_templates_started: Telemetry
     notification_templates_success: Telemetry
     notification_templates_error: Telemetry
     use_fact_cache: true
     credentials:
-      - "Demo Credential"
+      - Demo Credential
     survey_enabled: true
     survey:
-      name: ''
-      description: ''
+      name: ""
+      description: ""
       spec:
         - question_name: Server Name or Pattern
           type: text
@@ -178,21 +178,21 @@ controller_templates:
           variable: service_name
           required: true
 
-  - name: "LINUX / Stop Service"
+  - name: LINUX / Stop Service
     job_type: run
-    inventory: "Demo Inventory"
-    project: "Ansible official demo project"
-    playbook: "linux/service_stop.yml"
+    inventory: Demo Inventory
+    project: Ansible official demo project
+    playbook: linux/service_stop.yml
     notification_templates_started: Telemetry
     notification_templates_success: Telemetry
     notification_templates_error: Telemetry
     use_fact_cache: true
     credentials:
-      - "Demo Credential"
+      - Demo Credential
     survey_enabled: true
     survey:
-      name: ''
-      description: ''
+      name: ""
+      description: ""
       spec:
         - question_name: Server Name or Pattern
           type: text
@@ -203,20 +203,20 @@ controller_templates:
           variable: service_name
           required: true
 
-  - name: "LINUX / Run Shell Script"
+  - name: LINUX / Run Shell Script
     job_type: run
-    inventory: "Demo Inventory"
-    project: "Ansible official demo project"
-    playbook: "linux/run_script.yml"
+    inventory: Demo Inventory
+    project: Ansible official demo project
+    playbook: linux/run_script.yml
     notification_templates_started: Telemetry
     notification_templates_success: Telemetry
     notification_templates_error: Telemetry
     credentials:
-      - "Demo Credential"
+      - Demo Credential
     survey_enabled: true
     survey:
-      name: ''
-      description: ''
+      name: ""
+      description: ""
       spec:
         - question_name: Server Name or Pattern
           type: text
@@ -227,8 +227,8 @@ controller_templates:
           variable: shell_script
           required: true
 
-  - name: "LINUX / Fact Scan"
-    project: "Ansible official demo project"
+  - name: LINUX / Fact Scan
+    project: Ansible official demo project
     playbook: linux/fact_scan.yml
     inventory: Demo Inventory
     execution_environment: Default execution environment
@@ -240,28 +240,28 @@ controller_templates:
       - Demo Credential
     survey_enabled: true
     survey:
-      name: ''
-      description: ''
+      name: ""
+      description: ""
       spec:
         - question_name: Server Name or Pattern
           type: text
           variable: _hosts
           required: true
 
-  - name: "LINUX / Podman Webserver"
+  - name: LINUX / Podman Webserver
     job_type: run
-    inventory: "Demo Inventory"
-    project: "Ansible official demo project"
-    playbook: "linux/podman.yml"
+    inventory: Demo Inventory
+    project: Ansible official demo project
+    playbook: linux/podman.yml
     notification_templates_started: Telemetry
     notification_templates_success: Telemetry
     notification_templates_error: Telemetry
     credentials:
-      - "Demo Credential"
+      - Demo Credential
     survey_enabled: true
     survey:
-      name: ''
-      description: ''
+      name: ""
+      description: ""
       spec:
         - question_name: Server Name or Pattern
           type: text
@@ -271,13 +271,13 @@ controller_templates:
           type: textarea
           variable: message
           required: true
-          default: "This is Apache webserver running in a container with podman"
+          default: This is Apache webserver running in a container with podman
 
-  - name: "LINUX / System Roles"
+  - name: LINUX / System Roles
     job_type: run
-    inventory: "Demo Inventory"
-    project: "Ansible official demo project"
-    playbook: "linux/system_roles.yml"
+    inventory: Demo Inventory
+    project: Ansible official demo project
+    playbook: linux/system_roles.yml
     notification_templates_started: Telemetry
     notification_templates_success: Telemetry
     notification_templates_error: Telemetry
@@ -289,22 +289,22 @@ controller_templates:
       selinux_policy: targeted
       selinux_state: enforcing
     credentials:
-      - "Demo Credential"
+      - Demo Credential
     survey_enabled: true
     survey:
-      name: ''
-      description: ''
+      name: ""
+      description: ""
       spec:
         - question_name: Server Name or Pattern
           type: text
           variable: _hosts
           required: true
 
-  - name: "LINUX / Install Web Console (cockpit)"
+  - name: LINUX / Install Web Console (cockpit)
     job_type: run
-    inventory: "Demo Inventory"
-    project: "Ansible official demo project"
-    playbook: "linux/system_roles.yml"
+    inventory: Demo Inventory
+    project: Ansible official demo project
+    playbook: linux/system_roles.yml
     notification_templates_started: Telemetry
     notification_templates_success: Telemetry
     notification_templates_error: Telemetry
@@ -314,11 +314,11 @@ controller_templates:
       system_roles:
         - cockpit
     credentials:
-      - "Demo Credential"
+      - Demo Credential
     survey_enabled: true
     survey:
-      name: ''
-      description: ''
+      name: ""
+      description: ""
       spec:
         - question_name: Server Name or Pattern
           type: text
@@ -334,38 +334,38 @@ controller_templates:
             - full
           required: true
 
-  - name: "LINUX / DISA STIG"
+  - name: LINUX / DISA STIG
     job_type: run
-    inventory: "Demo Inventory"
-    project: "Ansible official demo project"
-    playbook: "linux/compliance.yml"
+    inventory: Demo Inventory
+    project: Ansible official demo project
+    playbook: linux/compliance.yml
     notification_templates_started: Telemetry
     notification_templates_success: Telemetry
     notification_templates_error: Telemetry
     credentials:
-      - "Demo Credential"
+      - Demo Credential
     extra_vars:
       sudo_remove_nopasswd: false
     survey_enabled: true
     survey:
-      name: ''
-      description: ''
+      name: ""
+      description: ""
       spec:
         - question_name: Server Name or Pattern
           type: text
           variable: _hosts
           required: true
 
-  - name: "LINUX / Multi-profile Compliance"
+  - name: LINUX / Multi-profile Compliance
     job_type: run
-    inventory: "Demo Inventory"
-    project: "Ansible official demo project"
-    playbook: "linux/compliance-enforce.yml"
+    inventory: Demo Inventory
+    project: Ansible official demo project
+    playbook: linux/compliance-enforce.yml
     notification_templates_started: Telemetry
     notification_templates_success: Telemetry
     notification_templates_error: Telemetry
     credentials:
-      - "Demo Credential"
+      - Demo Credential
     extra_vars:
       # used by CIS profile role
       sudo_require_authentication: false
@@ -379,8 +379,8 @@ controller_templates:
       firewalld_sshd_port_enabled: false
     survey_enabled: true
     survey:
-      name: ''
-      description: ''
+      name: ""
+      description: ""
       spec:
         - question_name: Server Name or Pattern
           type: text
@@ -400,20 +400,20 @@ controller_templates:
             - stig
             - e8
 
-  - name: "LINUX / Multi-profile Compliance Report"
+  - name: LINUX / Multi-profile Compliance Report
     job_type: run
-    inventory: "Demo Inventory"
-    project: "Ansible official demo project"
-    playbook: "linux/compliance-report.yml"
+    inventory: Demo Inventory
+    project: Ansible official demo project
+    playbook: linux/compliance-report.yml
     notification_templates_started: Telemetry
     notification_templates_success: Telemetry
     notification_templates_error: Telemetry
     credentials:
-      - "Demo Credential"
+      - Demo Credential
     survey_enabled: true
     survey:
-      name: ''
-      description: ''
+      name: ""
+      description: ""
       spec:
         - question_name: Server Name or Pattern
           type: text
@@ -441,17 +441,17 @@ controller_templates:
             - "false"
           default: "true"
 
-  - name: "LINUX / Insights Compliance Scan"
+  - name: LINUX / Insights Compliance Scan
     job_type: run
-    inventory: "Demo Inventory"
-    project: "Ansible official demo project"
-    playbook: "linux/insights_compliance_scan.yml"
+    inventory: Demo Inventory
+    project: Ansible official demo project
+    playbook: linux/insights_compliance_scan.yml
     credentials:
-      - "Demo Credential"
+      - Demo Credential
     survey_enabled: true
     survey:
-      name: ''
-      description: ''
+      name: ""
+      description: ""
       spec:
         - question_name: Server Name or Pattern
           type: text
@@ -462,25 +462,25 @@ controller_templates:
           variable: compliance_profile_configured
           required: true
           choices:
-            - "Yes"
-            - "No"
-          default: "No"
+            - Yes
+            - No
+          default: No
 
-  - name: "LINUX / Deploy Application"
+  - name: LINUX / Deploy Application
     job_type: run
-    inventory: "Demo Inventory"
-    project: "Ansible official demo project"
-    playbook: "linux/deploy_application.yml"
+    inventory: Demo Inventory
+    project: Ansible official demo project
+    playbook: linux/deploy_application.yml
     notification_templates_started: Telemetry
     notification_templates_success: Telemetry
     notification_templates_error: Telemetry
     use_fact_cache: true
     credentials:
-      - "Demo Credential"
+      - Demo Credential
     survey_enabled: true
     survey:
-      name: ''
-      description: ''
+      name: ""
+      description: ""
       spec:
         - question_name: Server Name or Pattern
           type: text
@@ -490,5 +490,3 @@ controller_templates:
           type: text
           variable: application
           required: true
-
-...

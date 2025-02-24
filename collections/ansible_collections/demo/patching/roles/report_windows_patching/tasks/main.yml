@@ -7,18 +7,18 @@
 
 - name: Copy CSS over
   ansible.windows.win_copy:
-    src: "css"
+    src: css
     dest: "{{ file_path }}"
     directory_mode: true
   check_mode: false
 
 - name: Copy logo over
   ansible.windows.win_copy:
-    src: "webpage_logo.png"
+    src: webpage_logo.png
     dest: "{{ file_path }}"
     directory_mode: true
   check_mode: false
 
 - name: Display link to Patch report
   ansible.builtin.debug:
-    msg: "Please go to http://{{ hostvars[report_server]['ansible_host'] }}/reports/windowspatch.html"
+    msg: Please go to http://{{ hostvars[report_server]['ansible_host'] }}/reports/windowspatch.html

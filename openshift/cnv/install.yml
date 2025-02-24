@@ -28,7 +28,7 @@
               - apiVersion: cdi.kubevirt.io/v1beta1
                 kind: DataVolume
                 metadata:
-                  creationTimestamp: null
+                  creationTimestamp:
                   name: "{{ vm_name }}"
                 spec:
                   sourceRef:
@@ -46,7 +46,7 @@
                   vm.kubevirt.io/flavor: small
                   vm.kubevirt.io/os: "{{ os_version | default('fedora') }}"
                   vm.kubevirt.io/workload: server
-                creationTimestamp: null
+                creationTimestamp:
                 labels:
                   kubevirt.io/domain: "{{ vm_name }}"
                   kubevirt.io/size: small
